@@ -1,23 +1,40 @@
 ﻿<Window x:Class="lab2.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="450" Width="800">
+        Title="TextEditor" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- Автоматична висота для панелі інструментів -->
+            <RowDefinition Height="Auto"/>
+            <!-- Решта простору для текстової області -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-    <Canvas Background="Cyan">
-        <!-- Label: зміщення 20 одиниць (Left: 20, Top: 20) -->
-        <Label Content="Label" 
-               Canvas.Left="20" 
-               Canvas.Top="20"/>
+        <!-- Рамка із закругленими кутами у першому рядку -->
+        <Border Grid.Row="0" 
+                BorderBrush="#FFCBBEBE" 
+                BorderThickness="2" 
+                CornerRadius="10" 
+                Margin="5">
 
-        <!-- TextBox: зміщення 40 одиниць (Left: 40, Top: 40) -->
-        <TextBox Text="text" 
-                 Width="50"
-                 Canvas.Left="40" 
-                 Canvas.Top="40"/>
+            <!-- Горизонтальна панель для кнопок -->
+            <StackPanel Orientation="Horizontal">
+                <Button ToolTip="Відкрити" Margin="2">
+                    <Image Source="images/open.png" Height="40" Width="40"/>
+                </Button>
+                <Button ToolTip="Стерти" Margin="2">
+                    <Image Source="images/clear.png" Height="40" Width="40"/>
+                </Button>
+                <Button ToolTip="Копіювати" Margin="2">
+                    <Image Source="images/copy.png" Height="40" Width="40"/>
+                </Button>
+                <Button ToolTip="Вставити" Margin="2">
+                    <Image Source="images/paste.png" Height="40" Width="40"/>
+                </Button>
+            </StackPanel>
+        </Border>
 
-        <!-- Button: зміщення 60 одиниць (Left: 60, Top: 60) -->
-        <Button Content="button" 
-                Canvas.Left="60" 
-                Canvas.Top="60"/>
-    </Canvas>
+        <!-- Текстова область у другому рядку -->
+        <TextBox Grid.Row="1" Margin="5" AcceptsReturn="True" TextWrapping="Wrap"/>
+    </Grid>
 </Window>
