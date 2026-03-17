@@ -4,20 +4,12 @@
         Title="TextEditor" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <!-- Автоматична висота для панелі інструментів -->
             <RowDefinition Height="Auto"/>
-            <!-- Решта простору для текстової області -->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Рамка із закругленими кутами у першому рядку -->
-        <Border Grid.Row="0" 
-                BorderBrush="#FFCBBEBE" 
-                BorderThickness="2" 
-                CornerRadius="10" 
-                Margin="5">
-
-            <!-- Горизонтальна панель для кнопок -->
+        <!-- ВЕРХНЯ ПАНЕЛЬ (Рядок 0) -->
+        <Border Grid.Row="0" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10" Margin="5">
             <StackPanel Orientation="Horizontal">
                 <Button ToolTip="Відкрити" Margin="2">
                     <Image Source="images/open.png" Height="40" Width="40"/>
@@ -34,7 +26,32 @@
             </StackPanel>
         </Border>
 
-        <!-- Текстова область у другому рядку -->
-        <TextBox Grid.Row="1" Margin="5" AcceptsReturn="True" TextWrapping="Wrap"/>
+        <!-- НИЖНЯ ПАНЕЛЬ (Рядок 1) -->
+        <Border Grid.Row="1" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10" Margin="5">
+            <!-- Вкладений Grid із двома рядками та Margin -->
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <!-- Текстова область займає все місце -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Рядок для кнопки підлаштовується автоматично -->
+                </Grid.RowDefinitions>
+
+                <!-- TextBox з вертикальною прокруткою -->
+                <TextBox Grid.Row="0" 
+                         AcceptsReturn="True" 
+                         TextWrapping="Wrap" 
+                         VerticalScrollBarVisibility="Auto"/>
+
+                <!-- DockPanel для позиціонування кнопки -->
+                <DockPanel Grid.Row="1" LastChildFill="False">
+                    <Button Content="OK" 
+                            DockPanel.Dock="Bottom" 
+                            HorizontalAlignment="Center" 
+                            Padding="10,2" 
+                            Margin="0,10,0,0"/>
+                </DockPanel>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
