@@ -4,14 +4,12 @@
         Title="TextEditor" Height="450" Width="800">
 
     <Window.Resources>
-        <!-- Ресурс градієнтної заливки жовто-блакитно-жовтої -->
         <LinearGradientBrush x:Key="LinearPanelBrush" StartPoint="0,0.5" EndPoint="1,0.5">
             <GradientStop Color="Yellow" Offset="0.0" />
             <GradientStop Color="Cyan" Offset="0.5" />
             <GradientStop Color="Yellow" Offset="1.0" />
         </LinearGradientBrush>
 
-        <!-- Стиль для кнопок панелі інструментів -->
         <Style TargetType="Button">
             <Setter Property="Margin" Value="5" />
             <Setter Property="Background" Value="Transparent" />
@@ -26,64 +24,48 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Панель інструментів -->
-        <Border Grid.Row="0" 
-                BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10" Margin="5"
-                Background="{StaticResource LinearPanelBrush}">
+        <!-- ПАНЕЛЬ ІНСТРУМЕНТІВ -->
+        <Border Grid.Row="0" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10" Margin="5" Background="{StaticResource LinearPanelBrush}">
             <StackPanel Orientation="Horizontal">
-                <Button ToolTip="Відкрити">
+                <Button Command="Open" ToolTip="Відкрити">
                     <Image Source="images/open.png" Height="40" Width="40"/>
                 </Button>
-                <Button ToolTip="Стерти">
+                <Button Command="Delete" ToolTip="Стерти">
                     <Image Source="images/clear.png" Height="40" Width="40"/>
                 </Button>
-                <Button ToolTip="Копіювати">
+                <!-- Вбудовані команди Copy та Paste -->
+                <Button Command="Copy" 
+                    CommandTarget="{Binding ElementName=MainTextBox}" 
+                    ToolTip="Копіювати">
                     <Image Source="images/copy.png" Height="40" Width="40"/>
                 </Button>
-                <Button ToolTip="Вставити">
+
+                <Button Command="Paste" 
+                    CommandTarget="{Binding ElementName=MainTextBox}" 
+                    ToolTip="Вставити">
                     <Image Source="images/paste.png" Height="40" Width="40"/>
                 </Button>
             </StackPanel>
         </Border>
 
-        <!-- Основна область редактора -->
-        <Border Grid.Row="1" 
-                BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10" Margin="5"
-                Background="{StaticResource LinearPanelBrush}">
+        <!-- ОБЛАСТЬ РЕДАКТОРА -->
+        <Border Grid.Row="1" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10" Margin="5" Background="{StaticResource LinearPanelBrush}">
             <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Текстове поле (прив'язка FontSize до Slider) -->
-                <TextBox Grid.Row="0" 
-                         x:Name="MainTextBox"
-                         AcceptsReturn="True" 
-                         TextWrapping="Wrap" 
-                         VerticalScrollBarVisibility="Auto"
-                         Background="White"
-                         FontSize="{Binding ElementName=fontSlider, Path=Value}" TextChanged="MainTextBox_TextChanged" Text="Text"/>
+                <TextBox x:Name="MainTextBox" Grid.Row="0" AcceptsReturn="True" TextWrapping="Wrap" 
+                         VerticalScrollBarVisibility="Auto" Background="White"
+                         FontSize="{Binding ElementName=fontSlider, Path=Value}"/>
 
-                <!-- Нижня панель керування -->
                 <DockPanel Grid.Row="1" LastChildFill="False" Margin="0,10,0,0">
-                    <!-- Підпис до слайдера -->
                     <Label Content="Розмір шрифта:" VerticalAlignment="Center"/>
+                    <Slider x:Name="fontSlider" Margin="4" MinWidth="100" Maximum="100" Minimum="12" Value="14" VerticalAlignment="Center"/>
 
-                    <!-- Повзунок керування розміром шрифту -->
-                    <Slider x:Name="fontSlider" 
-                            Margin="4" 
-                            MinWidth="100" 
-                            Maximum="100" 
-                            Minimum="12" 
-                            Value="72" Width="100" ValueChanged="fontSlider_ValueChanged"/>
-
-                    <!-- Кнопка OK -->
-                    <Button Content="OK" 
-                            Style="{x:Null}"
-                            DockPanel.Dock="Right" 
-                            HorizontalAlignment="Center" 
-                            Padding="10,2"/>
+                    <!-- Кнопка OK прив'язана до команди Save -->
+                    <Button Content="OK" Command="Save" Style="{x:Null}" DockPanel.Dock="Right" Padding="10,2"/>
                 </DockPanel>
             </Grid>
         </Border>
