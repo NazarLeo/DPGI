@@ -1,38 +1,23 @@
 ﻿<Window x:Class="lab2.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:lab2"
-        mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <DockPanel LastChildFill="True">
-        <!-- Притискаємо мітку до верху -->
+
+    <Canvas Background="Cyan">
+        <!-- Label: зміщення 20 одиниць (Left: 20, Top: 20) -->
         <Label Content="Label" 
-           DockPanel.Dock="Top" 
-           HorizontalAlignment="Center" 
-           Margin="10"/>
+               Canvas.Left="20" 
+               Canvas.Top="20"/>
 
-        <!-- Притискаємо кнопку до низу -->
-        <Button Content="Button" 
-            DockPanel.Dock="Bottom" 
-            Width="80" 
-            Height="30" 
-            Margin="0,20,0,40"/>
+        <!-- TextBox: зміщення 40 одиниць (Left: 40, Top: 40) -->
+        <TextBox Text="text" 
+                 Width="50"
+                 Canvas.Left="40" 
+                 Canvas.Top="40"/>
 
-        <!-- Лівий TextBox притискаємо до лівого краю -->
-        <TextBox Text="TextBox" 
-             DockPanel.Dock="Left" 
-             Width="250" 
-             Margin="10,0,10,0"/>
-
-        <!-- Правий TextBox притискаємо до правого краю -->
-        <TextBox Text="TextBox" 
-             DockPanel.Dock="Right" 
-             Width="250" 
-             Margin="10,0,10,0"/>
-
-        <!-- Центральна частина залишиться порожньою завдяки LastChildFill, 
-         якщо сюди нічого не додавати, або можна додати порожній контейнер -->
-    </DockPanel>
+        <!-- Button: зміщення 60 одиниць (Left: 60, Top: 60) -->
+        <Button Content="button" 
+                Canvas.Left="60" 
+                Canvas.Top="60"/>
+    </Canvas>
 </Window>
