@@ -6,28 +6,20 @@
         xmlns:local="clr-namespace:lab2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid ShowGridLines="True">
-        <Grid.RowDefinitions>
-            <!-- Перший ряд у 4 рази менший за другий -->
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="4*"/>
-            <!-- Третій ряд визначається автоматично -->
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="50,0">
+        <!-- Центруємо текст мітки -->
+        <Label Content="Label" HorizontalAlignment="Center" Margin="0,0,0,10"/>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
+        <!-- Створюємо 4 текстових поля, як на скриншоті -->
+        <TextBox Text="TextBox" Margin="0,2"/>
+        <TextBox Text="TextBox" Margin="0,2"/>
+        <TextBox Text="TextBox" Margin="0,2"/>
+        <TextBox Text="TextBox" Margin="0,2"/>
 
-        <!-- Label у першому рядку, другий стовпець -->
-        <Label Content="Label" Grid.Row="0" Grid.Column="1"/>
-
-        <!-- TextBox на весь другий рядок (ColumnSpan="3") -->
-        <TextBox Text="TextBox" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"/>
-
-        <!-- Button у третьому рядку, другий стовпець -->
-        <Button Content="Button" Grid.Row="2" Grid.Column="1"/>
-    </Grid>
+        <!-- Кнопка з обмеженою шириною та великим відступом зверху -->
+        <Button Content="Button" 
+            Width="150" 
+            HorizontalAlignment="Center" 
+            Margin="0,40,0,0"/>
+    </StackPanel>
 </Window>
