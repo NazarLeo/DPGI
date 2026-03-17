@@ -6,30 +6,33 @@
         xmlns:local="clr-namespace:lab2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="550">
-        <!-- Перший ряд: Label + 8 TextBox -->
-        <Label Content="Label" VerticalAlignment="Center" Margin="5,0"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
+    <DockPanel LastChildFill="True">
+        <!-- Притискаємо мітку до верху -->
+        <Label Content="Label" 
+           DockPanel.Dock="Top" 
+           HorizontalAlignment="Center" 
+           Margin="10"/>
 
-        <!-- Другий ряд: Label + 8 TextBox -->
-        <Label Content="Label" VerticalAlignment="Center" Margin="5,0"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
-        <TextBox Text="TextBox" Width="55" Margin="1"/>
+        <!-- Притискаємо кнопку до низу -->
+        <Button Content="Button" 
+            DockPanel.Dock="Bottom" 
+            Width="80" 
+            Height="30" 
+            Margin="0,20,0,40"/>
 
-        <!-- Кнопка знизу (вирівняна за допомогою великого Margin для імітації центру) -->
-        <Button Content="Button" Width="80" Margin="235,15,0,0"/>
-    </WrapPanel>
+        <!-- Лівий TextBox притискаємо до лівого краю -->
+        <TextBox Text="TextBox" 
+             DockPanel.Dock="Left" 
+             Width="250" 
+             Margin="10,0,10,0"/>
+
+        <!-- Правий TextBox притискаємо до правого краю -->
+        <TextBox Text="TextBox" 
+             DockPanel.Dock="Right" 
+             Width="250" 
+             Margin="10,0,10,0"/>
+
+        <!-- Центральна частина залишиться порожньою завдяки LastChildFill, 
+         якщо сюди нічого не додавати, або можна додати порожній контейнер -->
+    </DockPanel>
 </Window>
