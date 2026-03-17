@@ -26,7 +26,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Панель інструментів із використанням градієнта -->
+        <!-- Панель інструментів -->
         <Border Grid.Row="0" 
                 BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10" Margin="5"
                 Background="{StaticResource LinearPanelBrush}">
@@ -46,7 +46,7 @@
             </StackPanel>
         </Border>
 
-        <!-- Оточення текстового поля із використанням градієнта -->
+        <!-- Основна область редактора -->
         <Border Grid.Row="1" 
                 BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10" Margin="5"
                 Background="{StaticResource LinearPanelBrush}">
@@ -56,20 +56,34 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
+                <!-- Текстове поле (прив'язка FontSize до Slider) -->
                 <TextBox Grid.Row="0" 
+                         x:Name="MainTextBox"
                          AcceptsReturn="True" 
                          TextWrapping="Wrap" 
                          VerticalScrollBarVisibility="Auto"
-                         Background="White"/>
+                         Background="White"
+                         FontSize="{Binding ElementName=fontSlider, Path=Value}" TextChanged="MainTextBox_TextChanged" Text="Text"/>
 
-                <DockPanel Grid.Row="1" LastChildFill="False">
-                    <!-- Скасування стилю для кнопки OK (Style={x:Null}) -->
+                <!-- Нижня панель керування -->
+                <DockPanel Grid.Row="1" LastChildFill="False" Margin="0,10,0,0">
+                    <!-- Підпис до слайдера -->
+                    <Label Content="Розмір шрифта:" VerticalAlignment="Center"/>
+
+                    <!-- Повзунок керування розміром шрифту -->
+                    <Slider x:Name="fontSlider" 
+                            Margin="4" 
+                            MinWidth="100" 
+                            Maximum="100" 
+                            Minimum="12" 
+                            Value="72" Width="100" ValueChanged="fontSlider_ValueChanged"/>
+
+                    <!-- Кнопка OK -->
                     <Button Content="OK" 
                             Style="{x:Null}"
-                            DockPanel.Dock="Bottom" 
+                            DockPanel.Dock="Right" 
                             HorizontalAlignment="Center" 
-                            Padding="10,2" 
-                            Margin="0,10,0,0"/>
+                            Padding="10,2"/>
                 </DockPanel>
             </Grid>
         </Border>

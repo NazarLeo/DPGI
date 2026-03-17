@@ -20,5 +20,15 @@ namespace lab2
         {
             InitializeComponent();
         }
+
+        private void MainTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void fontSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
     }
 }
